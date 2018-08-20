@@ -1,19 +1,26 @@
 const path = require('path');
-const outputDir = path.join(__dirname, "build/");
 
 const isProd = process.env.NODE_ENV === 'production';
 
-// const ROOT = `./`;
-const ROOT = `./lib/es6/`;
-const ENTRY = path.resolve(ROOT, 'src/Index.bs.js');
+const ROOT = __dirname;
+const OUTPUT_DIR = "build/";
+const BS_ROOT = path.resolve(ROOT, `lib/es6`);
+const ENTRY = path.resolve(BS_ROOT, 'src/Index.bs.js');
 // console.log(ENTRY);
 
 module.exports = {
   entry: ENTRY,
   mode: isProd ? 'production' : 'development',
   output: {
-    path: outputDir,
-    publicPath: outputDir,
-    filename: 'Index.js',
+    path: path.resolve(ROOT, OUTPUT_DIR),
+    publicPath: OUTPUT_DIR,
+    filename: 'main.js',
   },
+  devServer: {
+    contentBase: ROOT,
+    // publicPath: OUTPUT_DIR,
+    compress: true,
+    // historyApiFallback: true,
+    port: 9000
+  }
 };

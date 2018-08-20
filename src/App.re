@@ -1,8 +1,10 @@
-
+/**
+ * Test ticker;
+ */
 let tick = ref(None);
 let initTick = (tickFn) => {
   open Util;
-  let minDelta = 100;
+  let minDelta = 200;
   let time = Time.make(~minDelta, ());
   let anim = Animation.create();
 
