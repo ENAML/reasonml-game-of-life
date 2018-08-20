@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ReasonReact Examples</title>
+  <style>
+    body {
+      font-family: monospace;
+    }
+    .app {
+      display: flex;
+      flex-direction: row;
+    }
+    .ui {
+      margin-right: 20px;
+    }
+    .grid {
+      background: #eee;
+      border-left: 1px solid black;
+      border-top: 1px solid black;
+    }
+    .row {
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .cell {
+      margin: 0;
+      padding: 0;
+      width: 10px;
+      height: 10px;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+    .cell.active {
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-root"></div>
+
+  <script src="../build/Index.js"></script>
+</body>
+</html>
