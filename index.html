@@ -14,10 +14,13 @@
     .ui {
       margin-right: 20px;
     }
+    .grid-wrapper {
+      padding: 20px;
+      background: #ddd;
+    }
     .grid {
-      background: #eee;
-      border-left: 1px solid black;
-      border-top: 1px solid black;
+      border-left: 1px solid #000;
+      border-top: 1px solid #000;
     }
     .row {
       margin: 0;
@@ -27,19 +30,21 @@
     .cell {
       margin: 0;
       padding: 0;
-      width: 10px;
-      height: 10px;
-      border-right: 1px solid black;
-      border-bottom: 1px solid black;
+      width: 8px;
+      height: 8px;
+      background: #222;
+      border-right: 1px solid #000;
+      border-bottom: 1px solid #000;
+      /* transition: background-color 0.1s ease; */
     }
     .cell.active {
-      background: black;
+      background: #ddd;
     }
   </style>
 </head>
 <body>
   <div class="app-root"></div>
 
-  <script src="../build/Index.js"></script>
+  <script src="build/Index.js"></script>
 </body>
 </html>

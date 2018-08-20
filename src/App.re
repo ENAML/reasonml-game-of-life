@@ -1,8 +1,31 @@
-open Game;
+
+let tick = ref(None);
+let initTick = (tickFn) => {
+  open Util;
+  let minDelta = 100;
+  let time = Time.make(~minDelta, ());
+  let anim = Animation.create();
+
+  let cb = (.)=> {
+    if (Time.update(time)) {
+      let dt = Time.getDelta(time);
+      /* print_endline("raf fired : " ++ itos(dt)); */
+      /* Js.log(component); */
+      tickFn(dt);
+    };
+    /* return */
+    Animation.Continue
+  };
+  Animation.setCallback(anim, ~callback=cb);
+
+  Animation.start(anim);
+  /* return */
+  anim
+};
 
 /* State declaration */
 type state = {
-  grid: Grid.t,
+  grid: Game.Grid.t,
   update: Game.update,
 };
 
@@ -28,15 +51,16 @@ let make = (_children) => {
 
   /* INITIAL STATE */
   initialState: () => {
-    let size = 40;
-    initState(~rows=size, ~cols=size,())
+    let rows = 50;
+    let cols = 100;
+    initState(~rows,~cols,())
   },
 
   /* REDUCER */
   reducer: (action, state) => {
     switch (action) {
       | Update => {
-        Js.log("update...");
+        /* Js.log("update..."); */
         let grid = state.update(state.grid);
         ReasonReact.Update({
           ...state,
@@ -44,6 +68,7 @@ let make = (_children) => {
         })
       }
       | Reset => {
+        open Game;
         open Grid;
         Js.log("reset...");
         let { numRows, numCols } = state.grid;
@@ -56,6 +81,17 @@ let make = (_children) => {
   /* RENDER */
   render: self => {
     let mtx = self.state.grid.data;
+
+    switch (tick^) {
+      | Some(_)  => ()
+      | None => {
+        let cb = (_dt) => {
+          self.send(Update);
+        };
+        tick := Some(initTick(cb));
+        ()
+      }
+    };
 
     /* build rows */
     let rowItems = Array.mapi((ri, row) => {
@@ -89,8 +125,10 @@ let make = (_children) => {
         (createBtn("Update", (_evt) => self.send(Update)))
         (createBtn("Reset", (_evt) => self.send(Reset)))
       </div>
-      <div className="grid">
-        (ReasonReact.array(rowItems))
+      <div className="grid-wrapper">
+        <div className="grid">
+          (ReasonReact.array(rowItems))
+        </div>
       </div>
       /* (ReasonReact.string("APP ROOT")) */
       /* <Component1 message="Hello!" /> */
