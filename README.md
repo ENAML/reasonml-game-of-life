@@ -1,4 +1,4 @@
-# my-react-app
+# reasonml-test
 
 ## Run Project
 
