@@ -6,6 +6,12 @@ type state = {
   update: Game.update,
 };
 
+let initState = (~rows=20, ~cols=10, ()) => {
+  let game = Game.make(rows, cols);
+  /* return */
+  { grid: game.grid, update: game.update }
+};
+
 /* Action declaration */
 type action =
 | Update
@@ -22,10 +28,8 @@ let make = (_children) => {
 
   /* INITIAL STATE */
   initialState: () => {
-    let size = 30;
-    let game = Game.make(size, size);
-    /* return */
-    { grid: game.grid, update: game.update }
+    let size = 40;
+    initState(~rows=size, ~cols=size,())
   },
 
   /* REDUCER */
@@ -43,11 +47,8 @@ let make = (_children) => {
         open Grid;
         Js.log("reset...");
         let { numRows, numCols } = state.grid;
-        let game = Game.make(numRows, numCols);
-        ReasonReact.Update({
-          grid: game.grid,
-          update: game.update
-        })
+        let newState = initState(~rows=numRows, ~cols=numCols, ());
+        ReasonReact.Update(newState)
       }
     }
   },
