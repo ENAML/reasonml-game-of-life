@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -12,7 +13,7 @@ module.exports = {
   mode: isProd ? 'production' : 'development',
   output: {
     path: path.resolve(ROOT, OUTPUT_DIR),
-    publicPath: OUTPUT_DIR,
+    // publicPath: OUTPUT_DIR,
     filename: 'main.js',
   },
   devServer: {
@@ -21,5 +22,18 @@ module.exports = {
     compress: true,
     // historyApiFallback: true,
     port: 9000
-  }
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin((()=>{
+      return {
+        filename: 'index.html',
+        template: 'public/index.html',
+        // config:
+        title: 'TEST APP TITLE',
+
+      };
+      // return null;
+    })()),
+  ],
 };

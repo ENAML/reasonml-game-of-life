@@ -4,10 +4,13 @@
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
-    "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack -w",
-    "webpack:production": "NODE_ENV=production webpack && cp -av public/* build",
+    "clean:bsb": "bsb -clean-world",
+    "clean:build": "rm -rf build/*",
+    "webpack": "webpack",
+    "webpack:watch": "webpack -w",
+    "webpack:production_OLD": "NODE_ENV=production webpack && cp -av public/* build",
+    "webpack:production": "NODE_ENV=production webpack",
     "serve": "webpack-dev-server"
   },
   "keywords": [
@@ -23,6 +26,8 @@
   },
   "devDependencies": {
     "bs-platform": "^4.0.5",
+    "gh-pages": "^1.2.0",
+    "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.0.1",
     "webpack-cli": "^2.0.10",
     "webpack-dev-server": "^3.1.5"
