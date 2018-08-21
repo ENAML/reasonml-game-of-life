@@ -22,5 +22,10 @@
     "bs-webapi"
   ],
   "refmt": 3,
-  "bsc-flags": ["-bs-super-errors"]
+  "bsc-flags": [
+    "-bs-super-errors",
+    // NOTE: turn this off whne building production
+    // see: https://bucklescript.github.io/docs/en/better-data-structures-printing-debug-mode.html
+    "-bs-g" 
+  ]
 }

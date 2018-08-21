@@ -149,7 +149,7 @@ module Grid = {
 /* Types: */
 type update = (Grid.t) => Grid.t;
 type t = {
-  grid: Grid.t,
+  mutable grid: Grid.t,
   update,
 };
 
@@ -215,6 +215,11 @@ let make = (numRows, numCols) => {
 
   /* return */
   { grid, update }
+};
+
+let update = (game) => {
+  let { grid, update } = game;
+  game.grid = update(grid);
 };
 
 /**
