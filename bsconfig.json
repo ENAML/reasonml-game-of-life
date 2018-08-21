@@ -24,8 +24,9 @@
   "refmt": 3,
   "bsc-flags": [
     "-bs-super-errors",
+    // FOR LOGGING RECORD TYPES IN CHROME
     // NOTE: turn this off whne building production
     // see: https://bucklescript.github.io/docs/en/better-data-structures-printing-debug-mode.html
-    "-bs-g" 
+    // "-bs-g" 
   ]
 }

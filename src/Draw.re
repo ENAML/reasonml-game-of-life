@@ -62,6 +62,10 @@ let clear = (ctx, x,y,w,h) => {
 let clearCtx = (ctx) => {
   clear(ctx, 0, 0, ctx.width, ctx.height)
 };
+let fillCtx = (ctx, col) => {
+  setFill(ctx, col);
+  rect(ctx, 0,0,ctx.width, ctx.height);
+};
 
 
 let test = () => {
