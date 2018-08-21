@@ -3,10 +3,9 @@ const path = require('path');
 const isProd = process.env.NODE_ENV === 'production';
 
 const ROOT = __dirname;
-const OUTPUT_DIR = "build/";
 const BS_ROOT = path.resolve(ROOT, `lib/es6`);
 const ENTRY = path.resolve(BS_ROOT, 'src/Index.bs.js');
-// console.log(ENTRY);
+const OUTPUT_DIR = "build/";
 
 module.exports = {
   entry: ENTRY,
@@ -17,7 +16,7 @@ module.exports = {
     filename: 'main.js',
   },
   devServer: {
-    contentBase: ROOT,
+    contentBase: path.resolve(ROOT, "public/"),
     // publicPath: OUTPUT_DIR,
     compress: true,
     // historyApiFallback: true,
