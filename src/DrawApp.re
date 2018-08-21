@@ -29,7 +29,6 @@ let start = () => {
   let game = Game.make(rows, cols);
   /* Js.log2("Game:", game); */
 
-
   /* init canvas */
   let ctx = Draw.create("app-canvas");
   Draw.setSize(ctx, dw, dh);

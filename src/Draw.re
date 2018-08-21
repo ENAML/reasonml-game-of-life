@@ -55,17 +55,17 @@ let resetTransform = (ctx) => {
   )
 };
 
+/* Set canvas elt size / scale */
 let setSize = (ctx, w, h)  => {
   open Util;
   open Webapi.Dom;
   let { context, canvas, scale } = ctx;
+  /* get scaled dimensions */
   let wScaled = w * scale;
   let hScaled = h * scale;
-
   /* set width / height attrs */
   Element.setAttribute("width", itos(wScaled), canvas);
   Element.setAttribute("height", itos(hScaled), canvas);
-
   /* set width / height style */
   let styleStr = {
     let res = "width: " ++ itos(w) ++ "px; ";
@@ -73,11 +73,9 @@ let setSize = (ctx, w, h)  => {
     res
   };
   canvas |> Element.setAttribute("style", styleStr);
-
   /* Normalize coordinate system to use css pixels */
   ctx |> resetTransform;
   context |> Canvas2dRe.scale(~x=float(scale), ~y=float(scale));
-
   /* update record */
   ctx.width = w;
   ctx.height = h;

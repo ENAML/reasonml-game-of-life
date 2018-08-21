@@ -30,12 +30,15 @@ module Math {
 };
 
 /**
- * String utils
+ * conversion utils
  */
+/* to string: */
 let itos = string_of_int;
 let ftos = string_of_float;
 let btos = string_of_bool;
 let ctos = (c) => String.make(1,c);
+/* to char: */
+let itoc = char_of_int;
 
 /**
  * Time tracker util
