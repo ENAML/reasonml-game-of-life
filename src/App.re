@@ -1,4 +1,4 @@
-/* /**
+/**
  * Test ticker;
  */
 let tick = ref(None);
@@ -6,23 +6,15 @@ let initTick = (tickFn) => {
   open Util;
   let minDelta = 200;
   let time = Time.make(~minDelta, ());
-  let anim = Animation.create();
 
-  let cb = (.)=> {
+  let cb = (_t)=> {
     if (Time.update(time)) {
       let dt = Time.getDelta(time);
-      /* print_endline("raf fired : " ++ itos(dt)); */
-      /* Js.log(component); */
       tickFn(dt);
     };
-    /* return */
-    Animation.Continue
   };
-  Animation.setCallback(anim, ~callback=cb);
 
-  Animation.start(anim);
-  /* return */
-  anim
+  Ticker.addCallback(cb);
 };
 
 /* State declaration */
@@ -137,4 +129,4 @@ let make = (_children) => {
       /* <Component2 greeting="Hello!" /> */
     </div>
   },
-}; */
+};

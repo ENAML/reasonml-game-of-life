@@ -1,43 +1,9 @@
-/* ReactDOMRe.renderToElementWithClassName(<App />, "app-root"); */
-
-
-/* let animTest = () => {
-  open Util;
-  let time = Time.make(~minDelta=200, ());
-  let anim = Animation.create();
-
-  let cb = (.)=> {
-    if (Time.update(time)) {
-      let dt = Time.getDelta(time);
-      print_endline("raf fired : " ++ itos(dt));
-    };
-    /* return */
-    Animation.Continue
-  };
-  Animation.setCallback(anim, ~callback=cb);
-
-  Animation.start(anim);
-}; */
-/* animTest(); */
-
 
 /* Game.test(); */
+/* Ticker.test(); */
+Ticker.start();
 
-/**
- * request animation frame test
- */
-/* let rafTest = () => {
-  /* open Webapi; */
-  Js.log("rafTest()");
-  let rec tick = (time) => {
-    print_endline("tick: " ++ Util.ftos(time));
-    Webapi.requestAnimationFrame(tick);
-  };
-  Webapi.requestAnimationFrame(tick);
-};
-rafTest(); */
-
-Ticker.test();
+ReactDOMRe.renderToElementWithClassName(<App />, "app-root");
 
 /**
  * canvas 2d 
@@ -96,4 +62,4 @@ module Ctx {
   };
 };
 
-Ctx.test();
+/* Ctx.test(); */

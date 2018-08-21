@@ -42,9 +42,14 @@ let rec tick = (time) => {
 
 /* start ticker */
 let start = () => {
-  if (!ticker.active) raf(tick);
-  ticker.active = true;
-  ()
+  if (!ticker.active) {
+    ticker.active = true;
+    raf(tick)
+  }
+  else {
+    Js.log("Error: ticker already running...")
+  }
+  ;
 };
 
 /* stop ticker */
