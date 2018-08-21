@@ -53,12 +53,17 @@ let start = () => {
       for (ci in 0 to cols-1) {
         open Game;
         let cell = Grid.get(game.grid, ri, ci);
-        if (cell.cur === Cell.Active) {
-          renderCell(cell, ri, ci);
-        }
-      }
-    }
-  }
+        switch (cell.cur) {
+          | Active => {
+            /* Draw.setFill(ctx, "eee"); */
+            renderCell(cell, ri, ci);
+          }
+          | Inactive => ()
+        };
+        ()
+      };
+    };
+  };
 
   let render = () => {
     Draw.clearCtx(ctx);

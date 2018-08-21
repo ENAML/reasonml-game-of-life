@@ -93,7 +93,7 @@ let create = (canvasId) => {
     canvas, context,
     width:10,
     height:10,
-    scale: Util.Math.minInt(Util.devicePixelRatio, 2),
+    scale: Util.Math.min(Util.devicePixelRatio, 2),
   };
   /* return */
   ctx
