@@ -25,15 +25,22 @@ module.exports = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin((()=>{
-      return {
+    (()=> {
+      const minify = !isProd ? false : {
+        minifyCSS: true,
+        collapseWhitespace: true,
+      };
+
+      const opts = {
+        // config:
         filename: 'index.html',
         template: 'public/index.html',
-        // config:
+        minify,
+        // tmpl:
         title: 'TEST APP TITLE',
-
       };
-      // return null;
-    })()),
+      return new HtmlWebpackPlugin(opts);
+    })(),
+    // TODO
   ],
 };
