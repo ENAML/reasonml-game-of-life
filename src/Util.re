@@ -35,6 +35,11 @@ module Time {
   let getDelta = (time) => time.delta;
 };
 
+let unwrapUnsafely =
+  fun
+  | Some(v) => v
+  | None => raise(Invalid_argument("Passed `None` to unwrapUnsafely"));
+
 let itos = string_of_int;
 let ftos = string_of_float;
 let btos = string_of_bool;

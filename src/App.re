@@ -1,4 +1,4 @@
-/**
+/* /**
  * Test ticker;
  */
 let tick = ref(None);
@@ -137,4 +137,4 @@ let make = (_children) => {
       /* <Component2 greeting="Hello!" /> */
     </div>
   },
-};
+}; */
