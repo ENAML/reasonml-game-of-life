@@ -11,10 +11,10 @@ let start = () => {
   open Util;
 
   /* set vars */
-  let rows = 100;
+  let rows = 80;
   let cols = 200;
   let cellSize = 5;
-  let gutterSize = 2;
+  let gutterSize = 1;
   let padding = 20;
 
   /* canvas size */
@@ -33,6 +33,10 @@ let start = () => {
   /* init canvas */
   let ctx = Draw.create("app-canvas");
   Draw.setSize(ctx, dw, dh);
+
+  /* TEST */
+  /* let curried = Draw.rect(ctx);
+  curried(0,0,0,0); */
 
   let renderCell = (_cell, ri, ci) => {
     /* Js.log(cell); */

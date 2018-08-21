@@ -3,9 +3,13 @@
  * =====
  */
 
+/* DateTime */
 /* [@bs.val] external currentTime : unit => int = "performance.now"; */
 [@bs.val] external currentTime : unit => int = "Date.now";
 
+/* DPI */
+[@bs.val] external devicePixelRatio : int = "window.devicePixelRatio";
+/* Js.log2("DPI:", devicePixelRatio) */
 
 module Time {
   type t = {
@@ -33,6 +37,11 @@ module Time {
   };
 
   let getDelta = (time) => time.delta;
+};
+
+module Math {
+  let maxInt = (a, b) => a >= b ? a : b;
+  let minInt = (a, b) => a <= b ? a : b;
 };
 
 let unwrapUnsafely =
