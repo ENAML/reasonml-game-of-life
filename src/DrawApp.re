@@ -43,7 +43,7 @@ let start = () => {
     let y = ri*cellSize + ri*gutterSize + padding;
     let w = cellSize;
     let h = cellSize;
-    Draw.rect(ctx, x, y, w, h);
+    Draw.fillRect(ctx, x, y, w, h);
   };
 
   let renderGrid = () => {
@@ -75,7 +75,7 @@ let start = () => {
     render();
   };
 
-  let tick_cb = (_t) => {
+  let tick = (_t) => {
     if (Time.update(time)) {
       let _dt = Time.getDelta(time);
       update();
@@ -83,7 +83,7 @@ let start = () => {
     ()
   };
 
-  Ticker.addCallback(tick_cb);
+  Ticker.addCallback(tick);
 
   /* update once.... */
   /* update(); */

@@ -22,13 +22,23 @@ let setStroke = (ctx, col) => {
   ()
 };
 
-let rect = (ctx, x,y,w,h) => {
-  /* open Webapi; */
-  let x=float(x);
-  let y=float(y);
-  let w=float(w);
-  let h=float(h);
-  fillRect(~x,~y,~w,~h, ctx.context);
+let fillRect = (ctx, x,y,w,h) => {
+  fillRect(
+    ~x=float(x),
+    ~y=float(y),
+    ~w=float(w),
+    ~h=float(h),
+    ctx.context
+  );
+};
+let strokeRect = (ctx, x,y,w,h) => {
+  strokeRect(
+    ~x=float(x),
+    ~y=float(y),
+    ~w=float(w),
+    ~h=float(h),
+    ctx.context
+  );
 };
 
 let clear = (ctx, x,y,w,h) => {
@@ -44,7 +54,7 @@ let clearCtx = (ctx) => {
 };
 let fillCtx = (ctx, col) => {
   setFill(ctx, col);
-  rect(ctx, 0,0,ctx.width, ctx.height);
+  fillRect(ctx, 0,0,ctx.width, ctx.height);
 };
 
 let resetTransform = (ctx) => {
@@ -102,7 +112,7 @@ let test = () => {
   setSize(ctx, 600, 400);
 
   setFill(ctx, "#0000FF");
-  rect(ctx, 20, 20, 50, 20);
+  fillRect(ctx, 20, 20, 50, 20);
   setFill(ctx, "#FF0000");
-  rect(ctx, 40, 50, 20, 50);
+  fillRect(ctx, 40, 50, 20, 50);
 };
