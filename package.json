@@ -9,10 +9,9 @@
     "clean:build": "rm -rf build/*",
     "webpack": "webpack",
     "webpack:watch": "webpack -w",
-    "webpack:production_OLD": "NODE_ENV=production webpack && cp -av public/* build",
     "webpack:production": "NODE_ENV=production webpack",
     "serve": "webpack-dev-server",
-    "deploy": "gh-pages -d build -m 'auto-generated commit'"
+    "deploy": "gh-pages -d dist -m 'auto-generated commit'"
   },
   "keywords": [
     "BuckleScript"

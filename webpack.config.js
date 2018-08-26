@@ -6,7 +6,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const ROOT = __dirname;
 const BS_ROOT = path.resolve(ROOT, `lib/es6`);
 const ENTRY = path.resolve(BS_ROOT, 'src/Index.bs.js');
-const OUTPUT_DIR = "build/";
+const OUTPUT_DIR = "dist/";
 
 module.exports = {
   entry: ENTRY,
