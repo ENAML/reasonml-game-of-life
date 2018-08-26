@@ -10,18 +10,13 @@ const OUTPUT_DIR = "dist/";
 
 module.exports = {
   entry: ENTRY,
+
   mode: isProd ? 'production' : 'development',
+
   output: {
     path: path.resolve(ROOT, OUTPUT_DIR),
     // publicPath: OUTPUT_DIR,
     filename: 'main.js',
-  },
-  devServer: {
-    contentBase: path.resolve(ROOT, "public/"),
-    // publicPath: OUTPUT_DIR,
-    compress: true,
-    // historyApiFallback: true,
-    port: 9000
   },
 
   plugins: [
@@ -43,4 +38,13 @@ module.exports = {
     })(),
     // TODO
   ],
+
+  devServer: {
+    contentBase: path.resolve(ROOT, "public/"),
+    // publicPath: OUTPUT_DIR,
+    compress: true,
+    // historyApiFallback: true,
+    port: 9000
+  },
+
 };
